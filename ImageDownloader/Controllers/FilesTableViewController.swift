@@ -9,35 +9,32 @@
 import UIKit
 import SSZipArchive
 
-class FilesTableViewController: UITableViewController, SSZipArchiveDelegate {
+class FilesTableViewController: UITableViewController {
     
     fileprivate let urlString = "https://dl.dropboxusercontent.com/u/4529715/JSON%20files%20updated.zip"
     fileprivate var folderDestination: String?
     
-    fileprivate var filenames: [String] = []
+    dynamic var fileContents: [FileContent] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadZipfile(urlString: urlString) {
-            
-        }
-    }
+        loadZipfile()    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filenames.count
+        return fileContents.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FileCell.cellId(), for: indexPath) as! FileCell
 
-        cell.titleLabel.text = filenames[indexPath.row]
+        cell.fileContent = fileContents[indexPath.row]
 
         return cell
     }
     
     //MARK: download zip file
-    fileprivate func loadZipfile(urlString: String, completion: @escaping () -> ()) {
+    func loadZipfile() {
         let url = URL(string: urlString)
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
@@ -90,9 +87,10 @@ class FilesTableViewController: UITableViewController, SSZipArchiveDelegate {
                 // Get the directory contents urls (including subfolders urls)
                 let directoryContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
                 
-                // if you want to filter the directory contents you can do like this:
+                //filter the directory contents
                 let files = directoryContents.filter({ $0.components(separatedBy: ".").last == "json" })
-                filenames = files
+                let fileContents = files.map({ FileContent(rootDirectory: location, title: $0) })
+                self.fileContents.append(contentsOf: fileContents)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -101,16 +99,5 @@ class FilesTableViewController: UITableViewController, SSZipArchiveDelegate {
             }
         }
         
-    }
-    
-    //MARK:
-    func zipArchiveDidUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String, unzippedFilePath: String) {
-        if folderDestination == nil {
-            folderDestination = unzippedFilePath
-        }
-        
-        if fileIndex + 1 == totalFiles {
-            getListsFile(at: folderDestination ?? "")
-        }
     }
 }

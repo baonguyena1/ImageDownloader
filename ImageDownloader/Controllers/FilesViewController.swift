@@ -10,6 +10,9 @@ import UIKit
 
 class FilesViewController: UIViewController {
     
+    @IBOutlet var resetBarButton: UIBarButtonItem!
+    @IBOutlet var addBarButton: UIBarButtonItem!
+    @IBOutlet var pauseBarButton: UIBarButtonItem!
     weak var filesTableViewController: FilesTableViewController?
 
     override func viewDidLoad() {
@@ -23,6 +26,26 @@ class FilesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func reset(_ sender: UIBarButtonItem) {
+        guard let filesTable = filesTableViewController else {
+            return
+        }
+        for file in filesTable.fileContents {
+            file.resetPhoto()
+        }
+        filesTable.fileContents.removeAll()
+        filesTable.tableView.reloadData()
+    }
+    
+    @IBAction func add(_ sender: UIBarButtonItem) {
+        guard let filesTable = filesTableViewController else {
+            return
+        }
+        filesTable.loadZipfile()
+    }
+    
+    @IBAction func pause(_ sender: UIBarButtonItem) {
+    }
 
     // MARK: - Navigation
 

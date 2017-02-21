@@ -86,11 +86,27 @@
                         <leftBarButtonItems>
                             <barButtonItem title="Reset" id="T64-6K-ZDY">
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="reset:" destination="Adk-VZ-sCy" id="RhV-aa-hRI"/>
+                                </connections>
                             </barButtonItem>
-                            <barButtonItem title="Add" id="xXX-Gg-9QG"/>
+                            <barButtonItem title="Add" id="xXX-Gg-9QG">
+                                <connections>
+                                    <action selector="add:" destination="Adk-VZ-sCy" id="fUc-wx-eDW"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Pause" id="aas-BB-a3s"/>
+                        <barButtonItem key="rightBarButtonItem" title="Pause" id="aas-BB-a3s">
+                            <connections>
+                                <action selector="pause:" destination="Adk-VZ-sCy" id="dKf-nE-x81"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addBarButton" destination="xXX-Gg-9QG" id="VUq-xc-Ldt"/>
+                        <outlet property="pauseBarButton" destination="aas-BB-a3s" id="fDM-wd-SBS"/>
+                        <outlet property="resetBarButton" destination="T64-6K-ZDY" id="6IX-0H-efh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gr5-PE-XhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,37 +121,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" rowHeight="60" id="PaN-7I-GRS" customClass="FileCell" customModule="ImageDownloader" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" rowHeight="80" id="PaN-7I-GRS" customClass="FileCell" customModule="ImageDownloader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PaN-7I-GRS" id="9bB-O3-c4O">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cNF-hQ-Lga">
-                                            <rect key="frame" x="0.0" y="58" width="375" height="2"/>
+                                            <rect key="frame" x="0.0" y="78" width="375" height="2"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="2" id="rYZ-M6-KV1"/>
                                             </constraints>
                                         </progressView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="qoH-Qi-UdF">
-                                            <rect key="frame" x="351" y="23" width="8" height="14"/>
+                                            <rect key="frame" x="351" y="33" width="8" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="Mzx-0i-xnc"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHE-GD-MKQ">
-                                            <rect key="frame" x="16" y="15" width="319" height="30.5"/>
+                                            <rect key="frame" x="16" y="23" width="319" height="34.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXV-SL-ybb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="19"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="555-MC-p9e" userLabel="Subtitle">
-                                                    <rect key="frame" x="0.0" y="18.5" width="319" height="12"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                                    <rect key="frame" x="0.0" y="20.5" width="319" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -164,6 +180,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="progressView" destination="cNF-hQ-Lga" id="xyN-1F-QRN"/>
                                     <outlet property="subtitleLabel" destination="555-MC-p9e" id="50i-Mp-RT8"/>
                                     <outlet property="titleLabel" destination="gXV-SL-ybb" id="7eC-co-V60"/>
                                 </connections>
