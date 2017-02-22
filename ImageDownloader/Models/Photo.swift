@@ -20,12 +20,15 @@ class Photo: NSObject {
     /// The photoImport is KVO observable for its progress.
     dynamic var photoImport: PhotoImport?
     
+    var fileStatus: FileStatus!
+    
     // MARK: Initializers
 
     init(URL: Foundation.URL) {
         imageURL = (URL as NSURL).copy() as! Foundation.URL
         
         image = grayImage
+        fileStatus = FileStatus.Downloading
     }
     
     /// Kick off the import
@@ -36,9 +39,11 @@ class Photo: NSObject {
             if let image = image {
                 // The import is finished. Set our image to the result
                 self.image = image
+                self.fileStatus = FileStatus.Finished
             }
             else if let error = error {
                 self.reportError(error)
+                self.fileStatus = FileStatus.Error
             }
 
             self.photoImport = nil

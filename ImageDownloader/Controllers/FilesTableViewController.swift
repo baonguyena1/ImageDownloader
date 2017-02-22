@@ -71,13 +71,11 @@ class FilesTableViewController: UITableViewController {
                             }
                         }, completionHandler: { (filelocation, success, error) in
                             if (success) {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                                    var relativepath = extractFileLocation
-                                    if let folderName = folderName {
-                                        relativepath = relativepath.appending("/\(folderName)")
-                                    }
-                                    _ = self.getListsFile(at: relativepath)
-                                })
+                                var relativepath = extractFileLocation
+                                if let folderName = folderName {
+                                    relativepath = relativepath.appending("/\(folderName)")
+                                }
+                                self.getListsFile(at: relativepath)
                             }
                         })
                         

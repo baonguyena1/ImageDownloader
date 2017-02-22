@@ -236,7 +236,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="kM5-Yz-xBX"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="8"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -288,9 +288,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3/4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-oY-My1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihd-oY-My1">
                                 <rect key="frame" x="338" y="626" width="21" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -318,10 +317,13 @@
                             <constraint firstItem="OYC-ip-hfq" firstAttribute="centerY" secondItem="FNE-1H-TyM" secondAttribute="centerY" id="327-rt-4aa"/>
                             <constraint firstItem="OYC-ip-hfq" firstAttribute="centerX" secondItem="FNE-1H-TyM" secondAttribute="centerX" id="4HP-Ut-MZp"/>
                             <constraint firstAttribute="trailing" secondItem="OYC-ip-hfq" secondAttribute="trailing" id="5A6-Wj-1Rg"/>
+                            <constraint firstAttribute="trailing" secondItem="ihd-oY-My1" secondAttribute="trailing" constant="16" id="JEa-s7-aw0"/>
                             <constraint firstItem="OYC-ip-hfq" firstAttribute="leading" secondItem="FNE-1H-TyM" secondAttribute="leading" id="Kix-vy-COB"/>
+                            <constraint firstItem="9eD-yp-Bzd" firstAttribute="top" secondItem="ihd-oY-My1" secondAttribute="bottom" constant="24" id="RU2-DV-Flz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="photoImageView" destination="OYC-ip-hfq" id="K8w-b6-rWy"/>
                         <outlet property="totalLabel" destination="ihd-oY-My1" id="HKS-J8-flo"/>
                     </connections>
                 </viewController>

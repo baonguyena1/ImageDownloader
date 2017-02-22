@@ -20,6 +20,7 @@
 		DC71FFE91E5C568900523B0C /* GlobalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71FFE81E5C568900523B0C /* GlobalProtocol.swift */; };
 		DCADF8951E5D2B3600235C76 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADF8941E5D2B3600235C76 /* PhotoCollectionViewController.swift */; };
 		DCADF8971E5D2B4E00235C76 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADF8961E5D2B4E00235C76 /* PhotoCell.swift */; };
+		DCADF8991E5D69C500235C76 /* QueueSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADF8981E5D69C500235C76 /* QueueSingleton.swift */; };
 		DCD69DAB1E5BF68400EEBCD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD69DAA1E5BF68400EEBCD4 /* AppDelegate.swift */; };
 		DCD69DB01E5BF68400EEBCD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD69DAE1E5BF68400EEBCD4 /* Main.storyboard */; };
 		DCD69DB21E5BF68400EEBCD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD69DB11E5BF68400EEBCD4 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		DC71FFE81E5C568900523B0C /* GlobalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalProtocol.swift; sourceTree = "<group>"; };
 		DCADF8941E5D2B3600235C76 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		DCADF8961E5D2B4E00235C76 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		DCADF8981E5D69C500235C76 /* QueueSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueSingleton.swift; sourceTree = "<group>"; };
 		DCD69DA71E5BF68400EEBCD4 /* ImageDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD69DAA1E5BF68400EEBCD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCD69DAF1E5BF68400EEBCD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				BF50E33D1E5C6EEB00AA3664 /* PhotoFilter.swift */,
 				BF50E33B1E5C6E5F00AA3664 /* PhotoImport.swift */,
 				BF50E3351E5C65DA00AA3664 /* PhotoDownload.swift */,
+				DCADF8981E5D69C500235C76 /* QueueSingleton.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				BF50E3401E5C6F5500AA3664 /* Photo.swift in Sources */,
 				DCD69DC01E5BFDB200EEBCD4 /* FilesTableViewController.swift in Sources */,
 				BF50E3451E5C702000AA3664 /* GlobalFunctions.swift in Sources */,
+				DCADF8991E5D69C500235C76 /* QueueSingleton.swift in Sources */,
 				BF50E33E1E5C6EEB00AA3664 /* PhotoFilter.swift in Sources */,
 				DCADF8971E5D2B4E00235C76 /* PhotoCell.swift in Sources */,
 				BF50E33A1E5C6BF700AA3664 /* GlobalEnum.swift in Sources */,

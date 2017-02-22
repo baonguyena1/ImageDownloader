@@ -26,3 +26,28 @@ extension DownloadStatus: CustomStringConvertible {
         }
     }
 }
+
+enum FileStatus {
+    case Queueing
+    case Downloading
+    case Error
+    case Unziping
+    case Finished
+}
+
+extension FileStatus: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .Queueing:
+            return "Queueing"
+        case .Downloading:
+            return "Downloading"
+        case .Error:
+            return "Error"
+        case .Unziping:
+            return "Unziping"
+        case .Finished:
+            return "Finished"
+        }
+    }
+}

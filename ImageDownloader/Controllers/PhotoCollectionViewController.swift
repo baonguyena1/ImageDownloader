@@ -17,13 +17,15 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
             
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func reload(_ sender: UIBarButtonItem) {
         fileCollection?.overallProgress?.cancel()
+        fileCollection?.resetPhoto()
+        self.collectionView?.reloadData()
         fileCollection?.overallProgress = fileCollection?.importPhotos()
     }
 
@@ -31,6 +33,11 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let previewController = segue.destination as? PhotoViewerViewController {
+            let row = self.collectionView?.indexPathsForSelectedItems?.first?.row
+            let photo = fileCollection?.photos[row!]
+            previewController.setImage(image: photo?.image, index: row! + 1, total: fileCollection?.photos.count ?? 0)
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -48,16 +55,17 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
     
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width/4
+        
+        let width = (view.frame.width - 4 - 2*3)/4.0
         return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 2
     }
 
 }
