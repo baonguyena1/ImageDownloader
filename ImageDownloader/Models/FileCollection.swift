@@ -46,17 +46,15 @@ class FileCollection: NSObject {
     func importPhotos() -> Progress {
         let progress = Progress()
 //        progress.totalUnitCount = Int64(photos.count)
-        progress.totalUnitCount = Int64(1)
-        
-//        for photo in photos {
-//            let importProgress = photo.startImport()
-//            
-//            progress.addChild(importProgress, withPendingUnitCount: 1)
-//        }
-        let photo = photos.first
-        let importProgress = photo!.startImport()
-        
-        progress.addChild(importProgress, withPendingUnitCount: 1)
+        //TODO: Add total unit download at here
+        let maxIndex = photos.count > 10 ? 10: photos.count
+        progress.totalUnitCount = Int64(maxIndex)
+        for index in 0..<maxIndex {
+            let photo = photos[index]
+            let importProgress = photo.startImport()
+            
+            progress.addChild(importProgress, withPendingUnitCount: 1)
+        }
         
         return progress
     }

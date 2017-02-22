@@ -25,10 +25,6 @@ class FileCell: UITableViewCell, CellIdentifiter {
         "paused"
     ]
     
-    fileprivate let fractionCompletedKeyPath = "photoImport.progress.fractionCompleted"
-    
-    fileprivate let imageKeyPath = "image"
-    
     var fileCollection: FileCollection! {
         didSet {
             titleLabel.text = fileCollection.title
@@ -56,7 +52,6 @@ class FileCell: UITableViewCell, CellIdentifiter {
             }
             
             updateProgressView()
-            updateToolbar()
         }
     }
     

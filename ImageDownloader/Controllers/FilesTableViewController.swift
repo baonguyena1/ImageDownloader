@@ -18,7 +18,18 @@ class FilesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadZipfile()    }
+        loadZipfile()
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let photoCollectionViewCell = segue.destination as? PhotoCollectionViewController {
+            let row = self.tableView.indexPathForSelectedRow?.row
+            photoCollectionViewCell.fileCollection = fileCollections[row!]
+        }
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,9 +91,9 @@ class FilesTableViewController: UITableViewController {
     }
     
     fileprivate func getListsFile(at location: String) {
-        print("LISTING ALL FILES FOUND location = \(location)");
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let path = dir.appendingPathComponent(location)
+            print("LISTING ALL FILES FOUND location = \(path)");
             do {
                 // Get the directory contents urls (including subfolders urls)
                 let directoryContents = try FileManager.default.contentsOfDirectory(atPath: path.path)
