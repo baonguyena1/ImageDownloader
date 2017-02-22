@@ -210,7 +210,7 @@
         <scene sceneID="pVj-cm-cB5">
             <objects>
                 <collectionViewController id="Tnv-mC-uaB" customClass="PhotoCollectionViewController" customModule="ImageDownloader" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bsb-D8-cvS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bsb-D8-cvS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -305,7 +305,7 @@
                                     <action selector="cancel:" destination="KKz-wq-X5C" eventType="touchUpInside" id="o4B-67-bw1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OYC-ip-hfq">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OYC-ip-hfq">
                                 <rect key="frame" x="0.0" y="122.5" width="375" height="422"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OYC-ip-hfq" secondAttribute="height" multiplier="16:18" id="nNT-zl-Cd7"/>
