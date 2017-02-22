@@ -14,6 +14,8 @@ class FilesViewController: UIViewController {
     @IBOutlet var addBarButton: UIBarButtonItem!
     @IBOutlet var pauseBarButton: UIBarButtonItem!
     weak var filesTableViewController: FilesTableViewController?
+    
+    var isPause =  true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,24 +29,32 @@ class FilesViewController: UIViewController {
     }
     
     @IBAction func reset(_ sender: UIBarButtonItem) {
-        guard let filesTable = filesTableViewController else {
+        guard let filesTableViewController = filesTableViewController else {
             return
         }
-        for file in filesTable.fileContents {
+        for file in filesTableViewController.fileCollections {
             file.resetPhoto()
         }
-        filesTable.fileContents.removeAll()
-        filesTable.tableView.reloadData()
+        filesTableViewController.fileCollections.removeAll()
+        filesTableViewController.tableView.reloadData()
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
-        guard let filesTable = filesTableViewController else {
+        guard let filesTableViewController = filesTableViewController else {
             return
         }
-        filesTable.loadZipfile()
+        filesTableViewController.loadZipfile()
     }
     
     @IBAction func pause(_ sender: UIBarButtonItem) {
+        guard let filesTableViewController = filesTableViewController else {
+            return
+        }
+        isPause = !isPause
+        pauseBarButton.title = isPause ? "Pause" : "Resume  "
+        for fileContent in filesTableViewController.fileCollections {
+            isPause ? fileContent.overallProgress?.resume() : fileContent.overallProgress?.pause()
+        }
     }
 
     // MARK: - Navigation

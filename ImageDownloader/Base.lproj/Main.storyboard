@@ -209,7 +209,7 @@
         <scene sceneID="pVj-cm-cB5">
             <objects>
                 <collectionViewController id="Tnv-mC-uaB" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bsb-D8-cvS">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bsb-D8-cvS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +268,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1wJ-Ey-AcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3303.1999999999998" y="145.27736131934034"/>
+            <point key="canvasLocation" x="3127" y="143"/>
         </scene>
         <!--Photo Viewer View Controller-->
         <scene sceneID="Nf2-EY-2YC">
@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vle-Gp-mEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4076" y="142.57871064467767"/>
+            <point key="canvasLocation" x="3876" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6aZ-vh-OW5">
@@ -338,6 +338,7 @@
         <!--Navigation Controller-->
         <scene sceneID="GCM-eW-Rng">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7du-ue-p1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NXH-AP-m3k" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xFQ-bH-ZiT">
@@ -349,7 +350,6 @@
                         <segue destination="Tnv-mC-uaB" kind="relationship" relationship="rootViewController" id="3Rz-EO-pJD"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7du-ue-p1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2364" y="144.3778110944528"/>
         </scene>

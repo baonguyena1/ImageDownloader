@@ -29,12 +29,12 @@ class FileCell: UITableViewCell, CellIdentifiter {
     
     fileprivate let imageKeyPath = "image"
     
-    var fileContent: FileContent! {
+    var fileCollection: FileCollection! {
         didSet {
-            titleLabel.text = fileContent.title
-            subtitleLabel.text = fileContent.subtitle.description
-            progressView.progress = fileContent.percentComplete
-            overallProgress = fileContent.importPhotos()
+            titleLabel.text = fileCollection.title
+            subtitleLabel.text = fileCollection.subtitle.description
+            overallProgress = fileCollection.importPhotos()
+            fileCollection.overallProgress = overallProgress
         }
     }
     

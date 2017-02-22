@@ -7,21 +7,23 @@
 //
 
 import UIKit
-import SSZipArchive
 
-class FileContent: NSObject {
+private var fileCellObservationContext = 0
+
+class FileCollection: NSObject {
+    
+    
     
     var rootDirectory: String!
     var title: String!
     var subtitle: DownloadStatus
-    var percentComplete: Float
     var photos: [Photo]!
+    var overallProgress: Progress?
     
     init(rootDirectory: String, title: String) {
         self.rootDirectory = rootDirectory
         self.title = title
         self.subtitle = DownloadStatus.Queueing
-        self.percentComplete = 0.0
         super.init()
         
         loadPhotoUrl()

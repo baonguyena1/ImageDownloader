@@ -40,6 +40,7 @@ class PhotoImport: NSObject, ProgressReporting {
 
         download.completionHandler = { data, error in
             guard let imageData = data, let image = UIImage(data: imageData as Data) else {
+                print(self.download.downloadURL.absoluteString)
                 self.callCompletionHandler(image: nil, error: error)
                 return
             }

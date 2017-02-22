@@ -14,7 +14,7 @@ class FilesTableViewController: UITableViewController {
     fileprivate let urlString = "https://dl.dropboxusercontent.com/u/4529715/JSON%20files%20updated.zip"
     fileprivate var folderDestination: String?
     
-    dynamic var fileContents: [FileContent] = []
+    dynamic var fileCollections: [FileCollection] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,13 @@ class FilesTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fileContents.count
+        return fileCollections.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FileCell.cellId(), for: indexPath) as! FileCell
 
-        cell.fileContent = fileContents[indexPath.row]
+        cell.fileCollection = fileCollections[indexPath.row]
 
         return cell
     }
@@ -89,8 +89,8 @@ class FilesTableViewController: UITableViewController {
                 
                 //filter the directory contents
                 let files = directoryContents.filter({ $0.components(separatedBy: ".").last == "json" })
-                let fileContents = files.map({ FileContent(rootDirectory: location, title: $0) })
-                self.fileContents.append(contentsOf: fileContents)
+                let fileContents = files.map({ FileCollection(rootDirectory: location, title: $0) })
+                self.fileCollections.append(contentsOf: fileContents)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
