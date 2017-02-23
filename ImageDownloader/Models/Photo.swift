@@ -169,5 +169,6 @@ class Photo: NSObject {
     func reset() {
         image = grayImage
         photoImport = nil
+        status = .None
     }
 }

@@ -12,21 +12,19 @@ private let reuseIdentifier = "Cell"
 
 class PhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var fileCollection: FileCollection? {
-        didSet {
-            
-        }
-    }
+    var fileCollection: FileCollection?
+    var reloadCompletion: (()->Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     @IBAction func reload(_ sender: UIBarButtonItem) {
-        fileCollection?.overallProgress?.cancel()
+        QueueSingleton.operationQueue.cancelAllOperations()
         fileCollection?.resetPhoto()
         self.collectionView?.reloadData()
-        fileCollection?.overallProgress = fileCollection?.importPhotos()
+        fileCollection?.overallProgress = nil
+        reloadCompletion()
     }
 
     // MARK: - Navigation

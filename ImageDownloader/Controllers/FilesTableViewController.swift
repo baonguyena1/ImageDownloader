@@ -18,7 +18,7 @@ class FilesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadZipfile()
+//        loadZipfile()
     }
     
     // MARK: - Navigation
@@ -26,8 +26,15 @@ class FilesTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let photoCollectionViewCell = segue.destination as? PhotoCollectionViewController {
-            let row = self.tableView.indexPathForSelectedRow?.row
-            photoCollectionViewCell.fileCollection = fileCollections[row!]
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let row = indexPath!.row
+            photoCollectionViewCell.fileCollection = fileCollections[row]
+            
+            photoCollectionViewCell.reloadCompletion = { _ in
+                let cell = self.tableView.cellForRow(at: indexPath!) as! FileCell
+                cell.overallProgress = nil  // Reset dowloading
+                self.tableView.reloadRows(at: [indexPath!], with: .automatic)
+            }
         }
     }
 
@@ -45,7 +52,7 @@ class FilesTableViewController: UITableViewController {
     }
     
     //MARK: download zip file
-    func loadZipfile() {
+    func loadZipfile(completion:@escaping ((_ success: Bool)->Void)) {
         let url = URL(string: urlString)
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
@@ -53,6 +60,7 @@ class FilesTableViewController: UITableViewController {
         let task = session.dataTask(with: url!) { (data, response, error) in
             if let error =  error {
                 print("Error: \(error.localizedDescription)")
+                completion(false)
                 return
             }
             if let data = data {
@@ -76,11 +84,15 @@ class FilesTableViewController: UITableViewController {
                                     relativepath = relativepath.appending("/\(folderName)")
                                 }
                                 self.getListsFile(at: relativepath)
+                                completion(true)
+                            } else {
+                                completion(false)
                             }
                         })
                         
                     } catch (let err) {
                         print("Error: \(err.localizedDescription)")
+                        completion(false)
                     }
                 }
             }

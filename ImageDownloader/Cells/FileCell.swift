@@ -39,7 +39,7 @@ class FileCell: UITableViewCell, CellIdentifiter {
     }
     
     /// The overall progress for the import that is shown to the user
-    fileprivate var overallProgress: Progress? {
+    	var overallProgress: Progress? {
         willSet {
             guard let formerProgress = overallProgress else { return }
             

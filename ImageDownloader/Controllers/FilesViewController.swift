@@ -20,7 +20,7 @@ class FilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        pauseBarButton.isEnabled = false
     }
     
     @IBAction func reset(_ sender: UIBarButtonItem) {
@@ -33,13 +33,22 @@ class FilesViewController: UIViewController {
         }
         filesTableViewController.fileCollections.removeAll()
         filesTableViewController.tableView.reloadData()
+        pauseBarButton.isEnabled = false
+        addBarButton.isEnabled = true
     }
     
     @IBAction func add(_ sender: UIBarButtonItem) {
         guard let filesTableViewController = filesTableViewController else {
             return
         }
-        filesTableViewController.loadZipfile()
+        addBarButton.isEnabled = false
+        filesTableViewController.loadZipfile { (success) in
+            DispatchQueue.main.async {
+                self.addBarButton.isEnabled = !success
+                self.pauseBarButton.isEnabled = success
+            }
+        }
+        
     }
     
     @IBAction func pause(_ sender: UIBarButtonItem) {

@@ -84,14 +84,6 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        if let formerPhoto = photo {
-            formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)
-            formerPhoto.removeObserver(self, forKeyPath: imageKeyPath, context: &photoCellObservationContext)
-        }
-    }
-    
     deinit {
         if let formerPhoto = photo {
             formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)

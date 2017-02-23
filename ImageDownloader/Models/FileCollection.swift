@@ -18,7 +18,7 @@ class FileCollection: NSObject {
     var title: String!
     var status: DownloadStatus
     var photos: [Photo]!
-    var overallProgress: Progress?
+    var overallProgress: Progress?  // Keep reference from list photo in FileCell
     
     init(rootDirectory: String, title: String) {
         self.rootDirectory = rootDirectory

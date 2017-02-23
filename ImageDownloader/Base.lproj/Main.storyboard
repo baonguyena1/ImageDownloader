@@ -268,7 +268,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="l5P-1b-PuB">
                         <barButtonItem key="rightBarButtonItem" title="Reload" id="75E-DJ-h8t">
-                            <color key="tintColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="reload:" destination="Tnv-mC-uaB" id="OPd-EG-0SW"/>
                             </connections>
