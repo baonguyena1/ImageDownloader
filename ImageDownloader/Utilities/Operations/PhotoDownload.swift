@@ -7,7 +7,7 @@
             
 */
 
-import Foundation
+import UIKit
 
 class PhotoDownload: NSObject, ProgressReporting {
     // MARK: Properties
@@ -42,8 +42,8 @@ class PhotoDownload: NSObject, ProgressReporting {
 
     // MARK: Initializers
     
-    init(URL: Foundation.URL) {
-        downloadURL = (URL as NSURL).copy() as! Foundation.URL
+    init(URL: URL) {
+        downloadURL = (URL as NSURL).copy() as! URL
 
         downloadState = DownloadState()
         
@@ -71,7 +71,7 @@ class PhotoDownload: NSObject, ProgressReporting {
         assert(nil == downloadState.queue, "`downloadState.queue` must not be nil in \(#function).")
         
         // Fake a download.
-        downloadState.queue = DispatchQueue(label: "download queue", attributes: [.concurrent])
+        downloadState.queue = DispatchQueue(label: "download queue", attributes: .concurrent)
         downloadState.queue.async {
             do {
                 // Fetch the data

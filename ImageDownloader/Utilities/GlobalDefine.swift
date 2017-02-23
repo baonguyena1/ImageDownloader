@@ -28,6 +28,7 @@ extension DownloadStatus: CustomStringConvertible {
 }
 
 enum FileStatus {
+    case None
     case Queueing
     case Downloading
     case Error
@@ -38,6 +39,8 @@ enum FileStatus {
 extension FileStatus: CustomStringConvertible {
     var description: String {
         switch self {
+        case .None:
+            return ""
         case .Queueing:
             return "Queueing"
         case .Downloading:
@@ -48,6 +51,25 @@ extension FileStatus: CustomStringConvertible {
             return "Unziping"
         case .Finished:
             return "Finished"
+        }
+    }
+}
+
+enum FileType {
+    case ZIP
+    case PDF
+    case IMAGE
+}
+
+extension FileType: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .ZIP:
+            return "zip"
+        case .PDF:
+            return "pdf"
+        case .IMAGE:
+            return ""
         }
     }
 }

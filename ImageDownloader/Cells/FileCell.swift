@@ -66,7 +66,9 @@ class FileCell: UITableViewCell, CellIdentifiter {
     
     fileprivate func updateProgressView() {
         if let overallProgress = self.overallProgress {
+            fileCollection.status = overallProgressIsFinished || overallProgress.isCancelled ? .Finished : .Downloading
             progressView.progress = Float(overallProgress.fractionCompleted)
+            print("Download \(Float(overallProgress.fractionCompleted))")
         }
         subtitleLabel.text = fileCollection.status.description
     }
@@ -81,18 +83,6 @@ class FileCell: UITableViewCell, CellIdentifiter {
         OperationQueue.main.addOperation {
             self.updateProgressView()
         }
-    }
-
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     class func cellId() -> String {

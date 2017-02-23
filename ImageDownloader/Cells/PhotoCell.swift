@@ -55,9 +55,7 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
     }
 
     fileprivate func updateImageView() {
-        UIView.transition(with: photoImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            self.photoImageView.image = self.photo?.image
-        }, completion: nil)
+        self.photoImageView.image = self.photo?.image
     }
     
     // MARK: Key-Value Observing

@@ -26,10 +26,11 @@ class FileCollection: NSObject {
         self.status = .Queueing
         super.init()
         
-        loadPhotoUrl()
+        loadJSONData()
     }
     
-    fileprivate func loadPhotoUrl() {
+    // Load URL JSON from json file
+    fileprivate func loadJSONData() {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let path = dir.appendingPathComponent("\(self.rootDirectory!)\(self.title!)")
             do {
@@ -42,6 +43,7 @@ class FileCollection: NSObject {
         }
     }
     
+    // Start add progress to queue
     func importPhotos() -> Progress {
         let progress = Progress()
         progress.totalUnitCount = Int64(photos.count)
@@ -49,7 +51,6 @@ class FileCollection: NSObject {
             let importProgress = photo.startImport()
             progress.addChild(importProgress, withPendingUnitCount: 1)
         }
-        status = .Downloading
         return progress
     }
     
@@ -57,6 +58,7 @@ class FileCollection: NSObject {
         for photo in photos {
             photo.reset()
         }
+        status = .Queueing
     }
 
 }

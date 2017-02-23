@@ -44,8 +44,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="uk2-X1-BRw">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="4" translatesAutoresizingMaskIntoConstraints="NO" id="uk2-X1-BRw">
                                         <rect key="frame" x="40" y="5" width="294" height="31"/>
+                                        <connections>
+                                            <action selector="changeConcurrentNumber:" destination="Adk-VZ-sCy" eventType="valueChanged" id="RDU-L5-5e7"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

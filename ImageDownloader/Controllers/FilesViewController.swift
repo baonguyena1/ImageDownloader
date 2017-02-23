@@ -27,6 +27,7 @@ class FilesViewController: UIViewController {
         guard let filesTableViewController = filesTableViewController else {
             return
         }
+        QueueSingleton.operationQueue.cancelAllOperations()
         for file in filesTableViewController.fileCollections {
             file.resetPhoto()
         }
@@ -52,6 +53,10 @@ class FilesViewController: UIViewController {
         }
     }
 
+    @IBAction func changeConcurrentNumber(_ sender: UISlider) {
+        QueueSingleton.operationQueue.maxConcurrentOperationCount = Int(sender.value)
+        print("maxConcurrentOperationCount = \(QueueSingleton.operationQueue.maxConcurrentOperationCount)")
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -13,7 +13,7 @@ import Foundation
 class QueueSingleton {
     static let operationQueue: OperationQueue = {
         let operation = OperationQueue()
-        operation.maxConcurrentOperationCount = 1
+        operation.maxConcurrentOperationCount = 4
        return operation
     }()
 }
