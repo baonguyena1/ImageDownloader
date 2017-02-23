@@ -33,8 +33,9 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
                 newPhoto.addObserver(self, forKeyPath: imageKeyPath, options: [], context: &photoCellObservationContext)
             }
             
-            updateImageView()
-            updateStatus()
+            self.updateImageView()
+            self.updateStatus()
+
         }
     }
     
@@ -48,7 +49,7 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
         }
         let fraction = Float(photoImport.progress.fractionCompleted)
         if (photoObject.status == .Downloading) {
-            statusLabel.text = (photo?.status.description ?? "") + String(format: "% 2.0f%%", fraction * 100)
+            statusLabel.text = photoObject.status.description + String(format: "% 2.0f%%", fraction * 100)
         } else {
             statusLabel.text = photoObject.status.description
         }
@@ -65,7 +66,6 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
         }
-        
         OperationQueue.main.addOperation {
             if keyPath == self.fractionCompletedKeyPath {
                 self.updateStatus()
@@ -76,6 +76,28 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
         }
     }
 
+    // call when back to main screen
+    func removeObserver() {
+        if let formerPhoto = photo {
+            formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)
+            formerPhoto.removeObserver(self, forKeyPath: imageKeyPath, context: &photoCellObservationContext)
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        if let formerPhoto = photo {
+            formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)
+            formerPhoto.removeObserver(self, forKeyPath: imageKeyPath, context: &photoCellObservationContext)
+        }
+    }
+    
+    deinit {
+        if let formerPhoto = photo {
+            formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)
+            formerPhoto.removeObserver(self, forKeyPath: imageKeyPath, context: &photoCellObservationContext)
+        }
+    }
     
     class func cellId() -> String {
         return "photoCell"

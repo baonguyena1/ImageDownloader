@@ -32,6 +32,7 @@ class PhotoImport: NSObject, ProgressReporting {
     }
 
     func start() {
+        print("start new operation")
         /*
             Use explicit composition to add the download's progress to ours,
             taking 9/10 units.

@@ -77,7 +77,7 @@ class Photo: NSObject {
     }
     
     fileprivate func unzipFileAndGetImage(data: Data, error: NSError?) {
-        print("Unzip file")
+        print("Unzip file...")
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let saveFileLocation = UUID().uuidString
             let extractFileLocation = UUID().uuidString
@@ -110,6 +110,8 @@ class Photo: NSObject {
                         } catch {
                             self.updateImage(image: nil, status: .Error)
                         }
+                    } else {
+                        self.updateImage(image: nil, status: .Error)
                     }
                 })
                 

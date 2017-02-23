@@ -29,8 +29,12 @@ class FileCell: UITableViewCell, CellIdentifiter {
         didSet {
             titleLabel.text = fileCollection.title
             subtitleLabel.text = fileCollection.status.description
-            overallProgress = fileCollection.importPhotos()
-            fileCollection.overallProgress = overallProgress
+            
+            if overallProgress == nil {
+                overallProgress = fileCollection.importPhotos()
+                fileCollection.overallProgress = overallProgress
+            }
+            
         }
     }
     
@@ -52,7 +56,6 @@ class FileCell: UITableViewCell, CellIdentifiter {
             }
             
             updateProgressView()
-            subtitleLabel.text = fileCollection.status.description
         }
     }
     
