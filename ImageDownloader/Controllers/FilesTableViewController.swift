@@ -30,7 +30,7 @@ class FilesTableViewController: UITableViewController {
             let row = indexPath!.row
             photoCollectionViewCell.fileCollection = fileCollections[row]
             
-            photoCollectionViewCell.reloadCompletion = { _ in
+            photoCollectionViewCell.forceReloadHandler = { _ in
                 let cell = self.tableView.cellForRow(at: indexPath!) as! FileCell
                 cell.overallProgress = nil  // Reset dowloading
                 self.tableView.reloadRows(at: [indexPath!], with: .automatic)

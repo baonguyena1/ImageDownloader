@@ -1,5 +1,5 @@
 //
-//  FileContent.swift
+//  FileCollection.swift
 //  ImageDownloader
 //
 //  Created by Bao Nguyen on 2/21/17.
@@ -11,9 +11,7 @@ import UIKit
 private var fileCellObservationContext = 0
 
 class FileCollection: NSObject {
-    
-    
-    
+    // MARK: properties
     var rootDirectory: String!
     var title: String!
     var status: DownloadStatus
@@ -54,6 +52,7 @@ class FileCollection: NSObject {
         return progress
     }
     
+    // Reset to init
     func resetPhoto() {
         for photo in photos {
             photo.reset()

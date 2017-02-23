@@ -12,10 +12,8 @@
 		BF50E3381E5C681700AA3664 /* FileCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E3371E5C681700AA3664 /* FileCollection.swift */; };
 		BF50E33A1E5C6BF700AA3664 /* GlobalDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E3391E5C6BF700AA3664 /* GlobalDefine.swift */; };
 		BF50E33C1E5C6E5F00AA3664 /* PhotoImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E33B1E5C6E5F00AA3664 /* PhotoImport.swift */; };
-		BF50E33E1E5C6EEB00AA3664 /* PhotoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E33D1E5C6EEB00AA3664 /* PhotoFilter.swift */; };
 		BF50E3401E5C6F5500AA3664 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E33F1E5C6F5500AA3664 /* Photo.swift */; };
 		BF50E3431E5C6FED00AA3664 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E3421E5C6FED00AA3664 /* UIImage+Helper.swift */; };
-		BF50E3451E5C702000AA3664 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50E3441E5C702000AA3664 /* GlobalFunctions.swift */; };
 		DC71FFE61E5C565500523B0C /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71FFE51E5C565500523B0C /* FileCell.swift */; };
 		DC71FFE91E5C568900523B0C /* GlobalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC71FFE81E5C568900523B0C /* GlobalProtocol.swift */; };
 		DCADF8951E5D2B3600235C76 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADF8941E5D2B3600235C76 /* PhotoCollectionViewController.swift */; };
@@ -38,10 +36,8 @@
 		BF50E3371E5C681700AA3664 /* FileCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCollection.swift; sourceTree = "<group>"; };
 		BF50E3391E5C6BF700AA3664 /* GlobalDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalDefine.swift; sourceTree = "<group>"; };
 		BF50E33B1E5C6E5F00AA3664 /* PhotoImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoImport.swift; sourceTree = "<group>"; };
-		BF50E33D1E5C6EEB00AA3664 /* PhotoFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFilter.swift; sourceTree = "<group>"; };
 		BF50E33F1E5C6F5500AA3664 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BF50E3421E5C6FED00AA3664 /* UIImage+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
-		BF50E3441E5C702000AA3664 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		DC3DE0A11E5C13350073F403 /* ImageDownloader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageDownloader-Bridging-Header.h"; sourceTree = "<group>"; };
 		DC71FFE51E5C565500523B0C /* FileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		DC71FFE81E5C568900523B0C /* GlobalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalProtocol.swift; sourceTree = "<group>"; };
@@ -98,7 +94,6 @@
 		BF50E3341E5C65CC00AA3664 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				BF50E33D1E5C6EEB00AA3664 /* PhotoFilter.swift */,
 				BF50E33B1E5C6E5F00AA3664 /* PhotoImport.swift */,
 				BF50E3351E5C65DA00AA3664 /* PhotoDownload.swift */,
 				DCADF8981E5D69C500235C76 /* QueueSingleton.swift */,
@@ -146,7 +141,6 @@
 				BF50E3341E5C65CC00AA3664 /* Operations */,
 				DC71FFE81E5C568900523B0C /* GlobalProtocol.swift */,
 				BF50E3391E5C6BF700AA3664 /* GlobalDefine.swift */,
-				BF50E3441E5C702000AA3664 /* GlobalFunctions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -326,9 +320,7 @@
 			files = (
 				BF50E3401E5C6F5500AA3664 /* Photo.swift in Sources */,
 				DCD69DC01E5BFDB200EEBCD4 /* FilesTableViewController.swift in Sources */,
-				BF50E3451E5C702000AA3664 /* GlobalFunctions.swift in Sources */,
 				DCADF8991E5D69C500235C76 /* QueueSingleton.swift in Sources */,
-				BF50E33E1E5C6EEB00AA3664 /* PhotoFilter.swift in Sources */,
 				DCADF8971E5D2B4E00235C76 /* PhotoCell.swift in Sources */,
 				BF50E33A1E5C6BF700AA3664 /* GlobalDefine.swift in Sources */,
 				DCD69DC21E5C092E00EEBCD4 /* PhotoViewerViewController.swift in Sources */,

@@ -8,6 +8,8 @@
 
 import Foundation
 
+let grayImage = UIImage(color: UIColor.gray, size: CGSize(width: 200, height: 200))
+
 enum DownloadStatus {
     case Queueing
     case Downloading

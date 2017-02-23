@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Protocol
 protocol CellIdentifiter {
     static func cellId() -> String
 }

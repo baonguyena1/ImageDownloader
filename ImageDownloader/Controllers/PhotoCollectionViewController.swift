@@ -12,8 +12,12 @@ private let reuseIdentifier = "Cell"
 
 class PhotoCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var fileCollection: FileCollection?
-    var reloadCompletion: (()->Void)!
+    var fileCollection: FileCollection? {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
+    var forceReloadHandler: (()->Void)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +28,7 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
         fileCollection?.resetPhoto()
         self.collectionView?.reloadData()
         fileCollection?.overallProgress = nil
-        reloadCompletion()
+        forceReloadHandler()
     }
 
     // MARK: - Navigation

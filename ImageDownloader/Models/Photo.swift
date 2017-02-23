@@ -1,11 +1,11 @@
-/*
-    Copyright (C) 2016 Apple Inc. All Rights Reserved.
-    See LICENSE.txt for this sample’s licensing information
-    
-    Abstract:
-                Photo represents an image that can be imported.
-            
-*/
+//
+//  Photo.swift
+//  ImageDownloader
+//
+//  Created by Bao Nguyen on 2/21/17.
+//  Copyright © 2017 Bao Nguyen. All rights reserved.
+//
+
 
 import UIKit
 import SSZipArchive
@@ -34,9 +34,10 @@ class Photo: NSObject {
     /// Kick off the import
     func startImport() -> Progress {
         let newImport = PhotoImport(URL: imageURL)
-        // Handle result after download
+        // Handle result after download, find file type and convert it to image
         newImport.completionHandler = { data, error in
             self.photoImport = nil
+            
             if let error = error {
                 self.reportError(error)
                 self.status = .Error

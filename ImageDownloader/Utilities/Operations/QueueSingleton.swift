@@ -6,10 +6,9 @@
 //  Copyright © 2017 Bao Nguyen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-
-
+// Define single to manager queue
 class QueueSingleton {
     static let operationQueue: OperationQueue = {
         let operation = OperationQueue()

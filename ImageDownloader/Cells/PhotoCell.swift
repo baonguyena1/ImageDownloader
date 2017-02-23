@@ -75,14 +75,6 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
             }
         }
     }
-
-    // call when back to main screen
-    func removeObserver() {
-        if let formerPhoto = photo {
-            formerPhoto.removeObserver(self, forKeyPath: fractionCompletedKeyPath, context: &photoCellObservationContext)
-            formerPhoto.removeObserver(self, forKeyPath: imageKeyPath, context: &photoCellObservationContext)
-        }
-    }
     
     deinit {
         if let formerPhoto = photo {
