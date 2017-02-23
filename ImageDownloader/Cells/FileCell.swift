@@ -28,7 +28,7 @@ class FileCell: UITableViewCell, CellIdentifiter {
     var fileCollection: FileCollection! {
         didSet {
             titleLabel.text = fileCollection.title
-            subtitleLabel.text = fileCollection.subtitle.description
+            subtitleLabel.text = fileCollection.status.description
             overallProgress = fileCollection.importPhotos()
             fileCollection.overallProgress = overallProgress
         }
@@ -52,6 +52,7 @@ class FileCell: UITableViewCell, CellIdentifiter {
             }
             
             updateProgressView()
+            subtitleLabel.text = fileCollection.status.description
         }
     }
     
@@ -67,10 +68,7 @@ class FileCell: UITableViewCell, CellIdentifiter {
         if let overallProgress = self.overallProgress {
             progressView.progress = Float(overallProgress.fractionCompleted)
         }
-    }
-    
-    fileprivate func updateToolbar() {
-        
+        subtitleLabel.text = fileCollection.status.description
     }
     
     // MARK: Key-Value Observing
@@ -82,7 +80,6 @@ class FileCell: UITableViewCell, CellIdentifiter {
         
         OperationQueue.main.addOperation {
             self.updateProgressView()
-            self.updateToolbar()
         }
     }
 

@@ -16,14 +16,14 @@ class FileCollection: NSObject {
     
     var rootDirectory: String!
     var title: String!
-    var subtitle: DownloadStatus
+    var status: DownloadStatus
     var photos: [Photo]!
     var overallProgress: Progress?
     
     init(rootDirectory: String, title: String) {
         self.rootDirectory = rootDirectory
         self.title = title
-        self.subtitle = DownloadStatus.Queueing
+        self.status = .Queueing
         super.init()
         
         loadPhotoUrl()
@@ -36,7 +36,6 @@ class FileCollection: NSObject {
                 let data = try Data(contentsOf: path, options: .alwaysMapped)
                 let photoUrls = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String]
                 photos = photoUrls.map({ Photo(URL: URL(string: $0)!) })
-                // auto Download photo
             } catch let error as NSError {
                 print("ERROR: \(error.localizedDescription)")
             }
@@ -45,17 +44,12 @@ class FileCollection: NSObject {
     
     func importPhotos() -> Progress {
         let progress = Progress()
-//        progress.totalUnitCount = Int64(photos.count)
-        //TODO: Add total unit download at here
-        let maxIndex = photos.count > 10 ? 10: photos.count
-        progress.totalUnitCount = Int64(maxIndex)
-        for index in 0..<maxIndex {
-            let photo = photos[index]
+        progress.totalUnitCount = Int64(photos.count)
+        for photo in photos {
             let importProgress = photo.startImport()
-            
             progress.addChild(importProgress, withPendingUnitCount: 1)
         }
-        
+        status = .Downloading
         return progress
     }
     

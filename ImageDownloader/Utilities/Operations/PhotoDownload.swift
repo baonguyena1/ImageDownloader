@@ -71,7 +71,7 @@ class PhotoDownload: NSObject, ProgressReporting {
         assert(nil == downloadState.queue, "`downloadState.queue` must not be nil in \(#function).")
         
         // Fake a download.
-        downloadState.queue = DispatchQueue(label: "download queue", attributes: [])
+        downloadState.queue = DispatchQueue(label: "download queue", attributes: [.concurrent])
         downloadState.queue.async {
             do {
                 // Fetch the data

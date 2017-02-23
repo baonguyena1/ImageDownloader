@@ -39,15 +39,18 @@ class PhotoCell: UICollectionViewCell, CellIdentifiter {
     }
     
     fileprivate func updateStatus() {
-        if let photoImport = photo?.photoImport {
-            let fraction = Float(photoImport.progress.fractionCompleted)
-            if (photo?.fileStatus == FileStatus.Downloading) {
-                statusLabel.text = (photo?.fileStatus.description ?? "") + String(format: "% 2.0f%%", fraction * 100)
-            } else {
-                statusLabel.text = photo?.fileStatus.description
-            }
+        guard let photoObject = photo else {
+            return
+        }
+        guard let photoImport = photoObject.photoImport else {
+            statusLabel.text = photoObject.status.description
+            return
+        }
+        let fraction = Float(photoImport.progress.fractionCompleted)
+        if (photoObject.status == .Downloading) {
+            statusLabel.text = (photo?.status.description ?? "") + String(format: "% 2.0f%%", fraction * 100)
         } else {
-            statusLabel.text = photo?.fileStatus.description
+            statusLabel.text = photoObject.status.description
         }
     }
 
