@@ -37,8 +37,3 @@ iOS 9.0+, recommend iOS 10.0 or Highest.
 
 ## Feature Not Implement
     Background tranfer
-
-## Explain
-    I do a things at once both: in the company and do this short assignment,
-    so 3 days is short for me.
-    Moreover, I don't have many experience when custom and handle thread.
